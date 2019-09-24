@@ -4,17 +4,22 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 from GUI import Register
 
+#----------Connection info--------------#
 host = "localhost"
 port = 9943
+#---------------------------------------#
+
+#Creating server socket
 server_socket = socket(AF_INET, SOCK_STREAM)
 server_socket.bind((host, port))
 server_socket.listen(10)
 
+#Dicts of clients and addresses
 clients = {}
 addresses = {}
 
 def accept_connections():
-    #Method for taking incomming conn and start credential checking threads
+    #Function for taking incomming conn and start credential checking threads
     while True:
         client, client_address = server_socket.accept()
         print("Connection from: " + str(client_address) + ". Passing to credential check...")
@@ -54,9 +59,9 @@ def validate_user(client, client_address):
     else:
         print("Unexpected login type." + login_type)
 
-def client_handler(client, user): # client socket and user as args
-    #when user reaches chatroom.
-    #for broadcasting messages between users
+def client_handler(client, user):
+    #Function for when user reaches chatroom.
+    #And to broadcast messages between users
 
     welcome = "Welcome %s. If you wish to exit, please type QQQ \n." % user
     client.send(bytes(welcome, "utf8"))
@@ -81,13 +86,14 @@ def client_handler(client, user): # client socket and user as args
             break
 
 def broadcast(user_message, prefix='', ):
-    #Method for relaying messages from each user to the rest, via client dict.
+    #Function for relaying messages from each user to the rest, via client dict.
     #Every client in client dict receives the message, by iterating through the list
     for client in clients:
         client.send(bytes(prefix, "utf8") + user_message)
 
 def checking(username, password):
-    #To compare
+    #Comparing entered password, in hashed, salted, digested form
+    #with the salted, digested password in user file
     password = hashlib.sha256(password.encode())
     saltystring = Register.get_salty()
     password.update(saltystring.encode())

@@ -6,17 +6,15 @@ from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 from tkinter import *
 from tkinter import messagebox
-
-#----------Connection info--------------#
 from GUI import Chat
 
+#----------Connection info--------------#
 host = '127.0.0.1'
 port = 9943
 #---------------------------------------#
 
 def submit_user(username, password, password2):
-    # New connection for passw validation
-    # Otherwise: bug, connection dies and trouble re-establish conn
+    # Connection initiated when register is chosen
     client_socket = socket(AF_INET, SOCK_STREAM)
     client_socket.connect((host, port))
     print(client_socket)
@@ -30,6 +28,7 @@ def submit_user(username, password, password2):
         print("Registered and validated. Off to chat room...")
         register_screen.destroy()
         print("User has registered, passing active client to chatroom class")
+        #Thread is initiated and started to handle chat session
         Thread(target=Chat.conn, args=(server_message, client_socket, username)).start()
     elif server_message == 'User exists':
         messagebox.showinfo("Username is taken!")
@@ -91,16 +90,16 @@ def closing():
     sys.exit(0)
 
 def check_if_user_exists(username):
-    if os.path.isfile('./users/' + username):
+    if os.path.isfile('../users/' + username):
         return True
     else:
         return False
 
 def get_salty():
-    #get size in bytes of path(salty)
+    #Get the size of the salty file
     saltylength = os.path.getsize("../secret/salty")
     with open("../secret/salty", 'r', encoding="utf-8") as file_handle:
-        #Læser længden af saltylength og ligger det i en string
+        #Reads length of salty(saltylength), saves it in a variable: saltystring
         saltystring = file_handle.read(saltylength)
         return saltystring
 
@@ -109,7 +108,7 @@ def create_password(username, password):
     # fixed size 256bit (32 bytes)
     password = hashlib.sha256(password.encode())
     saltystring = get_salty()
-    #feeder password bytes med saltystring i bytes.
+    #feeder password bytes with saltystring in bytes.
     password.update(saltystring.encode())
 
     with open("../users/" + username, 'wb') as file_handle:
@@ -128,6 +127,12 @@ def check_if_registered(username):
         return True
     else:
         return False
+
+#-----------------------------------------------------#
+"""
+Generation part of the program
+"""
+#-----------------------------------------------------#
 
 def generator_GUI():
     password_list = []

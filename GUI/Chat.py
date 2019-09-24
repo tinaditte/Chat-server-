@@ -2,14 +2,15 @@ from threading import Thread
 from tkinter import *
 
 #----------Connection info--------------#
-
 host = '127.0.0.1'
 port = 9943
 #---------------------------------------#
 
 def conn(active_conn2server, active_client, username):
+    #nested function for creating 'closure' - avoids using global variables
+    #also, hides functions that are not needed outside conn
+
     print("Script has passed to the Chat_room class")
-    global client_socket
     client_socket = active_client
     print(client_socket)
 
@@ -19,7 +20,7 @@ def conn(active_conn2server, active_client, username):
             try:
                 message = client_socket.recv(1024).decode('utf8')
                 message_list.insert(END, '\n' + message)
-            except OSError:  # if client leaves
+            except OSError:  # Error handling in case client leaves
                 break
 
     def send(event=None):
@@ -37,10 +38,6 @@ def conn(active_conn2server, active_client, username):
         usermessage.set("QQQ")
         send()
 
-    global window
-    global message_list
-    global user_list
-    global usermessage
     window = Toplevel()
     window.geometry("600x450")
     window.title("Chatroom")
@@ -75,6 +72,6 @@ def conn(active_conn2server, active_client, username):
 
     message_list.insert(END, "Welcome: " + username)
     user_list.insert(END, username + '\n')
-    receive_thread = Thread(target=receive)  # Starts thread to have socket monitored for traffic from server
+    receive_thread = Thread(target=receive)  # Starts thread for monitoring servertraffic
     receive_thread.start()
     window.protocol("WM_DELETE_WINDOW", closing_window)

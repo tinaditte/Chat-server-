@@ -11,17 +11,8 @@ host = '127.0.0.1'
 port = 9943
 #---------------------------------------#
 
-def GUI(master):     #always runs when class is called
-    """
-    Landing page, accepts master as argument
-    Class initialize regestration_screen and chat_room locally,
-    so function from the classes can be reached by reference.
-    Launching registration_screem by calling locally declared launch_registering_screen
-
-    () for calling toplevel function, it doesn't run on reference only
-    chat_room class has toplevel() located in _init_ and will run by instance
-
-    """
+def GUI(master):
+    #Closure function to avoid Global master
     def on_register(event=None):
         Register.register_gui()
         master.withdraw()
@@ -108,33 +99,32 @@ def GUI(master):     #always runs when class is called
 
     master.protocol("WM_DELETE_WINDOW", closing)
 
-def loggingin(username, password, master):
-    """
-    When 'login' button is pressed
-    Sends username and password to server, along with login type
-    Server sends back answer whether the login was valid og invalid
-    Client_socket is placed here to initiate new connection each time a password validation is requested.
-    Otherwise, the original connection dies and program will have issues to re-establish
-    """
-    client_socket = socket(AF_INET, SOCK_STREAM)
-    client_socket.connect((host, port))
-    print("Connection has been started by login attempt.")
-    print("Client Socket info: " + str(client_socket))
-    validation_data = 'try_login' + ' ' + username + ' ' + password + ' ' + password
-    client_socket.send(bytes(validation_data, "utf8"))
+    def loggingin(username, password):
+        """
+        Login button event
+        Username and password is send to server w/ the type: try_login
+        Server messages client socket back if the login was successful
+        Client_socket connection is started here, to validat credentials.
+        """
+        client_socket = socket(AF_INET, SOCK_STREAM)
+        client_socket.connect((host, port))
+        print("Connection has been started by login attempt.")
+        print("Client Socket info: " + str(client_socket))
+        #password sended twice due to register
+        validation_data = 'try_login' + ' ' + username + ' ' + password + ' ' + password
+        client_socket.send(bytes(validation_data, "utf8"))
 
-    server_message = client_socket.recv(1024).decode("utf8")
+        server_message = client_socket.recv(1024).decode("utf8")
 
-    if server_message == "valid":
-        print("User validation confirmed. Open chat room...")
-        master.withdraw()
-        #Starts chat room session
-        Thread(target=Chat.conn, args=(server_message, client_socket, username)).start()
+        if server_message == "valid":
+            print("User validation confirmed. Open chat room...")
+            master.withdraw()
+            #Starts chat room session
+            Thread(target=Chat.conn, args=(server_message, client_socket, username)).start()
 
-    elif server_message == "invalid":
-        messagebox.showinfo("Invalid password and/or username.")
-        client_socket.close()
-
-    else:
-        print(server_message)
-        client_socket.close()
+        elif server_message == "invalid":
+            messagebox.showinfo("Invalid password and/or username.")
+            client_socket.close()
+        else:
+            print(server_message)
+            client_socket.close()
