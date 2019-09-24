@@ -1,5 +1,6 @@
 import hashlib
 import os
+import threading
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 from GUI import Register
@@ -29,6 +30,7 @@ def accept_connections():
         vali_thread.start()
 
 def validate_user(client, client_address):
+    lock = threading.Lock()
     client_validation = client.recv(1024).decode("utf8")
     login_type, user, password, password2 = client_validation.split()
 
@@ -46,16 +48,17 @@ def validate_user(client, client_address):
             client.send(bytes("invalid", "utf8"))
 
     elif login_type == 'try_register':
-        if Register.check_if_user_exists(user):
-            client.send(bytes('User exists', 'utf8'))
-        elif Register.check_if_match(password, password2) == False:
-            print("Error, password mismatch")
-            client.send(bytes("mismatch", "utf8"))
-        else:
-            Register.create_password(user, password)
-            client.send(bytes("Register was successfull", "utf8"))
-            xhat_thread = Thread(target=client_handler, args=(client, user)) #Starts a new thread, pass it to client_handler
-            xhat_thread.start()
+        with lock: #automatically enters w lock, blocking other transaction, leaves it realeased
+            if Register.check_if_user_exists(user):
+                client.send(bytes('User exists', 'utf8'))
+            elif Register.check_if_match(password, password2) == False:
+                print("Error, password mismatch")
+                client.send(bytes("mismatch", "utf8"))
+            else:
+                Register.create_password(user, password)
+                client.send(bytes("Register was successfull", "utf8"))
+                xhat_thread = Thread(target=client_handler, args=(client, user)) #Starts a new thread, pass it to client_handler
+                xhat_thread.start()
     else:
         print("Unexpected login type." + login_type)
 

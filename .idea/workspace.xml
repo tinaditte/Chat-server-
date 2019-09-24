@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef60efc5-2400-45d6-ae8e-1dbaa9d24cd4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/woclass.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/woclass.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI/Chat.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/Chat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI/LandingGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/LandingGUI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GUI/Register.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/Register.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runnable/Server.py" beforeDir="false" afterPath="$PROJECT_DIR$/runnable/Server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runnable/clientB.py" beforeDir="false" afterPath="$PROJECT_DIR$/runnable/clientB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/y" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +29,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../practicepython" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -166,8 +164,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.clientB (1)" />
-        <item itemvalue="Python.Server (1)" />
         <item itemvalue="Python.clientA (1)" />
+        <item itemvalue="Python.Server (1)" />
         <item itemvalue="Python.clientB" />
         <item itemvalue="Python.clientA" />
       </list>
@@ -184,6 +182,8 @@
       <option name="presentableId" value="Default" />
       <updated>1569330267567</updated>
       <workItem from="1569330275875" duration="6348000" />
+      <workItem from="1569339851478" duration="4770000" />
+      <workItem from="1569346905891" duration="1421000" />
     </task>
     <servers />
   </component>
@@ -195,19 +195,21 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/woclass$Server.coverage" NAME="Server Coverage Results" MODIFIED="1569332828313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/woclass$clientA.coverage" NAME="clientA Coverage Results" MODIFIED="1569332829997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/woclass$clientA__1_.coverage" NAME="clientA (1) Coverage Results" MODIFIED="1569336146275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/runnable" />
-    <SUITE FILE_PATH="coverage/woclass$clientB__1_.coverage" NAME="clientB (1) Coverage Results" MODIFIED="1569336186331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/runnable" />
-    <SUITE FILE_PATH="coverage/woclass$Server__1_.coverage" NAME="Server (1) Coverage Results" MODIFIED="1569336184943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/runnable" />
-    <SUITE FILE_PATH="coverage/woclass$clientB.coverage" NAME="clientB Coverage Results" MODIFIED="1569332871556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/woclass$Register.coverage" NAME="Register Coverage Results" MODIFIED="1569332580893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/woclass$clientB__1_.coverage" NAME="clientB (1) Coverage Results" MODIFIED="1569349259188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/runnable" />
+    <SUITE FILE_PATH="coverage/woclass$clientA.coverage" NAME="clientA Coverage Results" MODIFIED="1569332829997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/woclass$clientA__1_.coverage" NAME="clientA (1) Coverage Results" MODIFIED="1569349240514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/runnable" />
+    <SUITE FILE_PATH="coverage/woclass$Server.coverage" NAME="Server Coverage Results" MODIFIED="1569332828313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/woclass$clientB.coverage" NAME="clientB Coverage Results" MODIFIED="1569332871556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/woclass$Server__1_.coverage" NAME="Server (1) Coverage Results" MODIFIED="1569349237020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/runnable" />
   </component>
 </project>

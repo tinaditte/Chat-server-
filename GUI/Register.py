@@ -2,6 +2,7 @@ import hashlib
 import os
 import random
 import string
+import threading
 from socket import AF_INET, socket, SOCK_STREAM
 from threading import Thread
 from tkinter import *
@@ -110,7 +111,6 @@ def create_password(username, password):
     saltystring = get_salty()
     #feeder password bytes with saltystring in bytes.
     password.update(saltystring.encode())
-
     with open("../users/" + username, 'wb') as file_handle:
         #adder password bytes, digested (sammenlagt) in file user
         file_handle.write(password.digest())
