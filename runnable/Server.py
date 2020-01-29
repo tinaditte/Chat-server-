@@ -107,6 +107,7 @@ def checking(username, password):
             hashedpass = file_handle.read(32)
             #if hashedpass is read the same as digested password
         if password.digest() == hashedpass:
+            #.digest() returns encoded string in bytes
             return True
         else:
             return False
